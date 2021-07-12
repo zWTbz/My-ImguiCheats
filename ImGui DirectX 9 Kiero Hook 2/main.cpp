@@ -29,10 +29,10 @@ struct Vec3 {
 			y = -360;
 		}
 		while (x > 89) {
-			x = 360;
+			x = 89;
 		}
 		while (y < -89) {
-			x = 360;
+			x = -89;
 		}
 	}
 
@@ -132,7 +132,6 @@ long __stdcall hkEndScene(LPDIRECT3DDEVICE9 pDevice)
 			if(triggerbotdelay){ 
 				ImGui::SliderInt("Trigger Bot Delay (Milisecons)", &delayTrigger, 0, 1000); 
 			}
-			
 		}
 		ImGui::Spacing();
 		ImGui::Separator();
@@ -155,8 +154,6 @@ long __stdcall hkEndScene(LPDIRECT3DDEVICE9 pDevice)
 		if (Recoil) {
 			ImGui::SliderFloat("No Recoil Amount", &NoRecAmount, 0, 1);
 		}
-		
-		
 		
 		ImGui::End();
 
@@ -242,8 +239,6 @@ DWORD WINAPI CheatThread(LPVOID lpRes) {
 			}
 			if (bhopp) {
 				int flags = *(int*)(LocalPlayer + m_fFlags);
-				
-
 				if (GetAsyncKeyState(VK_SPACE) && (flags == 257) & 1) {
 					*(uintptr_t*)(clientModule + dwForceJump) = 5;
 					*(uintptr_t*)(clientModule + dwForceJump) = 4;	
